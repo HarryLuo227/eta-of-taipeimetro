@@ -3,6 +3,7 @@ package main
 import (
 	"eta-of-taipeimetro/configuration"
 	"eta-of-taipeimetro/controllers"
+	v1 "eta-of-taipeimetro/controllers/v1"
 	"eta-of-taipeimetro/mongodb"
 	"fmt"
 	"log"
@@ -27,8 +28,8 @@ func main() {
 	// api
 	// api := router.Group("/api/v1")
 
-	router.GET("/api/v1/LineTransfer", mongodb.QueryAllLineTransfer)
-	// router.GET("/api/v1/S2STravelTime", controllers.v1)
+	router.GET("/api/v1/LineTransfer", v1.QueryAllLineTransfer)
+	router.GET("/api/v1/S2STravelTime", v1.QueryAllS2STravelTime)
 
 	router.GET("/hello/:startStation/:endStation", greeting)
 

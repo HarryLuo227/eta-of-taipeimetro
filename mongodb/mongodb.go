@@ -3,14 +3,10 @@ package mongodb
 import (
 	"context"
 	"eta-of-taipeimetro/configuration"
-	"eta-of-taipeimetro/mongodb/model"
 	"fmt"
 	"log"
-	"net/http"
 	"time"
 
-	"github.com/gin-gonic/gin"
-	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
@@ -95,29 +91,4 @@ func CloseConnection() {
 		panic(err)
 	}
 	log.Println("[Info] Connection to MongoDB closed.")
-}
-
-func QueryAllLineTransfer(c *gin.Context) {
-
-	result := []model.LineTransfer{}
-
-	cursor, err := LineTransferCollection.Find(context.TODO(), bson.D{})
-	if err != nil {
-		log.Println("[Error] Get QueryAll cursor error.")
-		panic(err)
-	}
-
-	for cursor.Next(context.TODO()) {
-		doc := model.LineTransfer{}
-		if err := cursor.Decode(&doc); err != nil {
-			log.Println("[Error] Decode cursor error.")
-			log.Fatal(err)
-		}
-		result = append(result, doc)
-	}
-	if err := cursor.Err(); err != nil {
-		log.Fatal(err)
-	}
-
-	c.JSON(http.StatusOK, result)
 }
