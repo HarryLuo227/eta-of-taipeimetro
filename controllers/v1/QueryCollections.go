@@ -60,3 +60,12 @@ func QueryAllS2STravelTime(c *gin.Context) {
 
 	c.JSON(http.StatusOK, result)
 }
+
+func DurationTesting(c *gin.Context) {
+	// c.JSON(200, gin.H{
+	// 	"data": "Hello, Golang gin-gonic!",
+	// })
+	start := c.Param("startStation")
+	end := c.Param("endStation")
+	c.String(http.StatusOK, "Start : %s\nEnd : %s\n", start, end)
+}
