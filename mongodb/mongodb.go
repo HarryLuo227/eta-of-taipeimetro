@@ -19,6 +19,7 @@ var (
 	DB                      *mongo.Database
 	LineTransferCollection  *mongo.Collection
 	S2STravelTimeCollection *mongo.Collection
+	StationOfLineCollection *mongo.Collection
 )
 
 func Initialize() {
@@ -50,6 +51,7 @@ func initMongoDBClients(user string, pwd string, address string, port int, dbNam
 	DB := client.Database(dbName)
 	LineTransferCollection = DB.Collection("LineTransfer")
 	S2STravelTimeCollection = DB.Collection("S2STravelTime")
+	StationOfLineCollection = DB.Collection("StationOfLine")
 }
 
 func setupConnection(ctx context.Context, uri string, user string, pwd string) *mongo.Client {
