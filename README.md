@@ -12,7 +12,7 @@ This is a simple web service project which implement to get some data from Mongo
 > 
 > <b>Collection name</b>
 > 
-> LineTransfer, S2STravelTime
+> LineTransfer, S2STravelTime, StationOfLine
 
 If you want to run on your local machine, you need to
 
@@ -28,7 +28,9 @@ If you want to run on your local machine, you need to
 
 ## Features
 
-Calculate the duration time you take between any two stations of Taipei Metro.
+**Goal : Calculate the time duration you take between any two stations of Taipei Metro.**
+
+Get the time duration between any two stations on the same line.
 
 ## Data reference
 
